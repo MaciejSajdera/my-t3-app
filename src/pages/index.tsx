@@ -1,15 +1,9 @@
 import Head from "next/head";
+import MainMenu from "../common/components/ui/menus/MainMenu";
 import { mainMenuItems } from "../common/lib/data/menus";
 import { personalData } from "../common/lib/data/personal";
-import RootLayout from "../layouts/root";
 import type { NextPageWithLayout } from "./_app";
-import MainMenu from "../common/components/ui/menus/MainMenu";
-
-/* 
-
-signing up with magic link will cause theme to change to a special onew
-
-*/
+import WithPageTransition from "../layouts/root/WithPageTransition";
 
 const Home: NextPageWithLayout = () => {
   return (
@@ -18,16 +12,16 @@ const Home: NextPageWithLayout = () => {
         <title>{`${personalData?.firstName} ${personalData?.lastName}`}</title>
       </Head>
       <div className="container m-auto flex flex-col items-center justify-center gap-12 px-4 py-16">
-        <div className="flex flex-col items-center gap-2">
-          <MainMenu menuItems={mainMenuItems} />
-        </div>
+        {/* <MouseResponsiveLayer className="w-full border-2 border-accent p-8">
+          </MouseResponsiveLayer> */}
+        <MainMenu menuItems={mainMenuItems} className="flex flex-col gap-8" />
       </div>
     </>
   );
 };
 
 Home.getLayout = function getLayout(page) {
-  return <RootLayout>{page}</RootLayout>;
+  return <WithPageTransition>{page}</WithPageTransition>;
 };
 
 export default Home;

@@ -6,7 +6,7 @@ type Props = {
 
 export default function Header({ children }: Props) {
   return (
-    <div className="absolute top-0 flex w-full bg-transparent px-12 pt-6">
+    <div className="absolute top-0 z-40 flex w-full bg-transparent px-12 pt-6">
       {children}
     </div>
   );

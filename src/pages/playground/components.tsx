@@ -1,13 +1,17 @@
-import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
+import Head from "next/head";
+import { useState } from "react";
 import AuthShowcase from "../../common/components/ui/AuthShowcase";
 import Modal from "../../common/components/ui/Modal";
 import Toggle from "../../common/components/ui/Toggle";
 import useClickOutsideOf from "../../common/hooks/useClickOutsideOf";
 import { useKeyDown } from "../../common/hooks/useKeyDown";
 import { api } from "../../common/utils/api";
-import RootLayout from "../../layouts/root";
 import type { NextPageWithLayout } from "../_app";
-import Head from "next/head";
+import WithPageTransition from "../../layouts/root/WithPageTransition";
+const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
+  ssr: false,
+});
 
 /* 
 
@@ -58,6 +62,27 @@ const Components: NextPageWithLayout = () => {
           <Modal ref={modalRef} isOpen={isOpen} setIsOpen={setIsOpen}>
             <AuthShowcase />
           </Modal>
+
+          <AnimatedCursor
+            trailingSpeed={20}
+            hasBlendMode={true}
+            outerStyle={{
+              mixBlendMode: "exclusion",
+            }}
+            clickables={[
+              "a",
+              'input[type="text"]',
+              'input[type="email"]',
+              'input[type="number"]',
+              'input[type="submit"]',
+              'input[type="image"]',
+              "label[for]",
+              "select",
+              "textarea",
+              "button",
+              ".link",
+            ]}
+          />
         </div>
       </div>
     </>
@@ -65,7 +90,7 @@ const Components: NextPageWithLayout = () => {
 };
 
 Components.getLayout = function getLayout(page) {
-  return <RootLayout>{page}</RootLayout>;
+  return <WithPageTransition>{page}</WithPageTransition>;
 };
 
 export default Components;

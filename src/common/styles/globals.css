@@ -14,6 +14,31 @@
   h1 {
     @apply font-proxima;
   }
+
+  .app-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .page-wrap {
+    display: flex;
+    position: absolute;
+    height: 100%;
+    width: 100vw;
+  }
+
+  .page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+    width: 100vw;
+    padding-top: 30px;
+  }
 }
 
 @layer components {

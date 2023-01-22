@@ -1,5 +1,6 @@
 export type TMenu = {
   menuItems: TMenuItem[];
-} & React.HTMLAttributes<HTMLDivElement>;
+  menuItemClassName?: string;
+} & React.HTMLAttributes<HTMLElement>;
 
 export type TMenuItem = { name: string; href: string };
