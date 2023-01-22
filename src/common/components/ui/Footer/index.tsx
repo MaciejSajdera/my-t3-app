@@ -1,6 +1,6 @@
 import React from "react";
-import { TMenuItem } from "../../../lib/data/types";
 import { personalData } from "../../../lib/data/personal";
+import { TMenuItem } from "../menus/types";
 
 type Props = {
   menuItems: TMenuItem[];
@@ -15,7 +15,7 @@ export default function Footer({ menuItems }: Props) {
           className="mb-4 flex items-center sm:mb-0"
         >
           <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
-            {personalData?.name}
+            {personalData?.firstName}
           </span>
         </a>
         <ul className="mb-6 flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 sm:mb-0">

@@ -2,17 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-.btn {
-  @apply no-animation transform-none;
+@layer base {
+  body {
+    overflow-x: hidden;
+  }
+  @font-face {
+    font-family: "Proxima";
+    src: url("../fonts/Proxima-Nova-W08-Thin.ttf") format("truetype");
+  }
+
+  h1 {
+    @apply font-proxima;
+  }
 }
 
-.modal-box {
-  transition: all 200ms cubic-bezier(0, 1.07, 1, 1);
-  transform: translateY(20px);
-  opacity: 0;
-}
+@layer components {
+  .btn {
+    @apply no-animation transform-none;
+  }
 
-.modal-box-enter-done {
-  opacity: 1;
-  transform: translateY(0);
+  .modal-box {
+    transition: all 200ms cubic-bezier(0, 1.07, 1, 1);
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  .modal-box-enter-done {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

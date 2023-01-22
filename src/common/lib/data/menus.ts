@@ -1,5 +1,5 @@
-import type { TMenuItem } from "./types";
+import { TMenuItem } from "../../components/ui/menus/types";
 
-export const mainMenu: TMenuItem[] = [
-    { name: "Mini Projects", href: "/mini-projects" },
+export const mainMenuItems: TMenuItem[] = [
+  { name: "Playground", href: "/playground" },
 ];

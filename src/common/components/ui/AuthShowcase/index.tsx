@@ -12,12 +12,12 @@ export default function AuthShowcase() {
   return (
     <div className="flex flex-col items-center justify-center gap-4">
       <div>
-        <p className="text-center text-2xl text-white">
+        <p className="text-center text-2xl">
           {sessionData && <span>Logged in as {sessionData.user?.email}</span>}
         </p>
       </div>
       <div>
-        <p className="text-center text-2xl text-white">
+        <p className="text-center text-2xl">
           {secretMessage && <span>{secretMessage}</span>}
         </p>
       </div>
