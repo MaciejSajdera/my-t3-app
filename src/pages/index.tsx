@@ -1,11 +1,13 @@
 import Head from "next/head";
 import MainMenu from "../common/components/ui/menus/MainMenu";
-import { mainMenuItems } from "../common/lib/data/menus";
 import { personalData } from "../common/lib/data/personal";
 import type { NextPageWithLayout } from "./_app";
 import WithPageTransition from "../layouts/root/WithPageTransition";
 
+const mainMenuItems = process.env.menu;
+
 const Home: NextPageWithLayout = () => {
+  console.log(mainMenuItems);
   return (
     <>
       <Head>

@@ -37,7 +37,7 @@ const Modal = forwardRef<HTMLDivElement | null, TModal>((props, ref) => {
                   className={`modal-box relative flex w-full max-w-${maxWidth} flex-col items-start rounded bg-white p-5 text-lg text-gray-800 shadow-lg`}
                 >
                   <button
-                    className="btn-circle btn ml-auto"
+                    className="btn-circle btn absolute right-2 top-2 border-none bg-transparent"
                     onClick={() => setIsOpen(false)}
                   >
                     <svg

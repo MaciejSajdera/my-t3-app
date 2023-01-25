@@ -1,4 +1,5 @@
 // @ts-check
+import menu from "./menuMaker.mjs";
 /**
  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
  * This is especially useful for Docker builds.
@@ -12,6 +13,9 @@ const config = {
   i18n: {
     locales: ["en"],
     defaultLocale: "en",
+  },
+  env: {
+    menu: menu.get("./src/pages"),
   },
 };
 export default config;

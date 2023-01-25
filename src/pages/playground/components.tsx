@@ -9,6 +9,8 @@ import { useKeyDown } from "../../common/hooks/useKeyDown";
 import { api } from "../../common/utils/api";
 import type { NextPageWithLayout } from "../_app";
 import WithPageTransition from "../../layouts/root/WithPageTransition";
+import useGlobalStore from "../../common/hooks/zustand/useEarthStore";
+import { handleThemeToggle } from "../../common/utils/helpers";
 const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
   ssr: false,
 });
@@ -19,16 +21,16 @@ signing up with magic link will cause theme to change to a special onew
 
 */
 
-const handleThemeToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
-  if (e.target.checked) {
-    document.documentElement.setAttribute("data-theme", "cupcake");
-  } else {
-    document.documentElement.setAttribute("data-theme", "myDark");
-  }
-};
 
 const Components: NextPageWithLayout = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const isThemeToggleChecked = useGlobalStore(
+    (state) => state.isThemeToggleChecked
+  );
+
+  const setIsThemeToggleChecked = useGlobalStore(
+    (state) => state.setIsThemeToggleChecked
+  );
 
   const handleClickOutside = () => {
     setIsOpen((prevState) => !prevState);
@@ -57,7 +59,11 @@ const Components: NextPageWithLayout = () => {
             Open Modal
           </button>
 
-          <Toggle onChange={handleThemeToggle} />
+          <Toggle
+            onChange={handleThemeToggle}
+            isChecked={isThemeToggleChecked}
+            setIsChecked={setIsThemeToggleChecked}
+          />
 
           <Modal ref={modalRef} isOpen={isOpen} setIsOpen={setIsOpen}>
             <AuthShowcase />
