@@ -13,7 +13,7 @@ export default function MainMenu({
   return (
     <div className="w-full" ref={constraintsRef}>
       <ul {...rest}>
-        {menuItems.map((item, index) => {
+        {menuItems?.map((item, index) => {
           return (
             <motion.li
               key={`${item.name}${index}`}

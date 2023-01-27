@@ -3,11 +3,16 @@ import MainMenu from "../common/components/ui/menus/MainMenu";
 import { personalData } from "../common/lib/data/personal";
 import type { NextPageWithLayout } from "./_app";
 import WithPageTransition from "../layouts/root/WithPageTransition";
+import getMenuItems from "../common/utils/getMenuItems";
+import type { TMenuItem } from "../common/components/ui/menus/types";
 
-const mainMenuItems = process.env.menu;
+type TPageProps = {
+  mainMenuItems: TMenuItem[];
+};
 
-const Home: NextPageWithLayout = () => {
+const Home: NextPageWithLayout<TPageProps> = ({ mainMenuItems }) => {
   console.log(mainMenuItems);
+
   return (
     <>
       <Head>
@@ -27,3 +32,16 @@ Home.getLayout = function getLayout(page) {
 };
 
 export default Home;
+
+// get server side props to get the menu items
+export function getServerSideProps() {
+  const mainMenuItems = getMenuItems("src/pages");
+
+  console.log("mainMenuItems", mainMenuItems);
+
+  return {
+    props: {
+      mainMenuItems: [...mainMenuItems],
+    },
+  };
+}

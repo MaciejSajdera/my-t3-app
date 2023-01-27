@@ -9,7 +9,7 @@ import { useKeyDown } from "../../common/hooks/useKeyDown";
 import { api } from "../../common/utils/api";
 import type { NextPageWithLayout } from "../_app";
 import WithPageTransition from "../../layouts/root/WithPageTransition";
-import useGlobalStore from "../../common/hooks/zustand/useEarthStore";
+import useGlobalStore from "../../common/hooks/zustand/useGlobalStore";
 import { handleThemeToggle } from "../../common/utils/helpers";
 const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
   ssr: false,
@@ -20,7 +20,6 @@ const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
 signing up with magic link will cause theme to change to a special onew
 
 */
-
 
 const Components: NextPageWithLayout = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);

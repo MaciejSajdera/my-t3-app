@@ -5,7 +5,7 @@
 
 import * as React from "react";
 
-import useGlobalStore from "../../hooks/zustand/useEarthStore";
+import useGlobalStore from "../../hooks/zustand/useGlobalStore";
 
 export interface IMouseTrailsProps {}
 

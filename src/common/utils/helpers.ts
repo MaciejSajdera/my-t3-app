@@ -11,3 +11,4 @@ export const handleThemeToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
     document.documentElement.setAttribute("data-theme", "myDark");
   }
 };
+

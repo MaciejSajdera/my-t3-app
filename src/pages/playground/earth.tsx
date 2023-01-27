@@ -4,7 +4,7 @@ import WithPageTransition from "../../layouts/root/WithPageTransition";
 import type { NextPageWithLayout } from "../_app";
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import useGlobalStore from "../../common/hooks/zustand/useEarthStore";
+import useGlobalStore from "../../common/hooks/zustand/useGlobalStore";
 import { set } from "zod";
 const GlobeHallow = dynamic(
   () => import("../../common/components/3d/GlobeHallow"),
@@ -20,11 +20,13 @@ const GlobeDark = dynamic(
 );
 
 const EarthPage: NextPageWithLayout = () => {
-  const isThemeToggleChecked = useGlobalStore((state) => state.isThemeToggleChecked);
+  const isThemeToggleChecked = useGlobalStore(
+    (state) => state.isThemeToggleChecked
+  );
 
-  const lightEarth = "//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
- const  darkEarth = "//unpkg.com/three-globe/example/img/earth-night.jpg"
-
+  const lightEarth =
+    "//unpkg.com/three-globe/example/img/earth-blue-marble.jpg";
+  const darkEarth = "//unpkg.com/three-globe/example/img/earth-night.jpg";
 
   const [globeLayer, setGlobeLayer] = useState(darkEarth);
 
@@ -34,9 +36,7 @@ const EarthPage: NextPageWithLayout = () => {
     } else {
       setGlobeLayer(darkEarth);
     }
-  }, [isThemeToggleChecked])
-
-
+  }, [isThemeToggleChecked]);
 
   return (
     <>
